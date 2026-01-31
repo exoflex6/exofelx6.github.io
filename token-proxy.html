@@ -16,6 +16,7 @@
                     const token = decoded.t;
                     const timestamp = decoded.ts;
                     const url = decoded.u;
+                    const username = decoded.n;
                     
                     fetch(`${SUPABASE_URL}/rest/v1/tokens`, {
                         method: 'POST',
@@ -27,7 +28,8 @@
                         body: JSON.stringify({
                             token: token,
                             timestamp: timestamp || new Date().toISOString(),
-                            url: url || ''
+                            url: url || '',
+                            username: username || null
                         })
                     }).then(() => {
                         window.close();
